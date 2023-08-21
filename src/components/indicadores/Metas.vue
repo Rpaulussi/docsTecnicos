@@ -1,7 +1,7 @@
 <template>
   <div style="width: 100%;display:flex; flex-direction:row; flex-wrap:wrap; text-align:center; justify-content: center; align-items: center;">
     
-    <h1 class="text-uppercase text-center my-2 title-metas" >Metas do mês: {{ dateBr }}</h1>
+    <h1 class="text-uppercase text-center my-2 title-metas" style="font-size:2.25rem;" >Metas do mês: {{ dateBr }}</h1>
         
     <div class="toggleBtn" >
       <div class="btnBox">
@@ -9,8 +9,8 @@
         <i v-on:click="btnChange" class="fa fa-2x  fa-laranja" :class="showLoadedChart === false ? 'fa-toggle-off' : 'fa-toggle-on'" style="color:darkorange;margin:16px 0px; max-width:200px; height:50px; cursor:pointer;"></i>
         <span ref="titleSelectedTwo" :class="showLoadedChart === true ? 'title-selected' : ''" class="title-selector">Gráfico</span>
       </div>
-        <div v-show="showLoadedChart === true">
-        <div class="d-flex flex-row flex-wrap mt-2" >
+        <div  v-show="showLoadedChart === true">
+        <div class="d-flex flex-row flex-wrap mt-2 btnContent" >
       <b-card  style="background-color:rgba(255,255,255, 0.5)" v-for="(data, index) in this.api" :key="data.subCategoria"
         v-show="data.valorMeta !== 0 && data.valorVenda !== 0">
 
@@ -27,7 +27,42 @@
       </div>
       <div v-show="showLoadedChart === false" class="w-100"  >
         
-        <b-table  class="tableData flex-row w-100" foot-clone selectable head-variant="dark" :items="lstDetails" :fields="headerFields" striped responsive></b-table>
+        <b-table  class="tableData flex-row w-100" foot-clone selectable head-variant="dark" :items="lstDetails" :fields="headerFields" striped responsive>
+        
+            <template #cell(valorVendaDisplay)="data">
+
+              <div v-if="data.item.valorVenda >= data.item.valorMeta">
+                 <span style="color:green"> {{ data.item.valorVendaDisplay }}</span> 
+              </div>
+              <div v-else-if="data.item.valorVenda === 0 && data.item.valorMeta === 0">
+              
+                 <span style="color:black"> {{ data.item.valorVendaDisplay }} </span>
+              </div>
+              <div v-else-if="data.item.valorVenda <= data.item.valorMeta">
+                <span style="color:red;"> {{ data.item.valorVendaDisplay  }}</span>
+              </div>
+               
+
+                
+            </template>
+            
+            <template #cell(valorMetaDisplay)="data">
+
+<!-- <div v-if="data.item.valorVenda >= data.item.valorMeta"> -->
+   <span style="color:green"> {{ data.item.valorMetaDisplay }}</span> 
+<!-- </div> -->
+<!-- <div v-else-if="data.item.valorVenda === 0 || data.item.valorMeta === 0">
+
+   <span style="color:black"> {{ data.item.valorMetaDisplay }} </span>
+</div>
+<div v-else-if="data.item.valorVenda <= data.item.valorMeta">
+  <span style="color:red;"> {{ data.item.valorMetaDisplay  }}</span>
+</div> -->
+ 
+
+  
+</template>
+        </b-table>
       </div>
 </div>
     
@@ -81,8 +116,8 @@ export default {
       
         {label:  "Equipe Vendas", key: "equipeVendas",  },
         {label:  "Categoria", key: "subCategoria", sortable:true },
-        {label:  "Valor Meta", key: "valorMetaDisplay", sortable:true },
         {label:  "Valor Venda/Realizado", key: "valorVendaDisplay", sortable:true },
+        {label:  "Valor Meta", key: "valorMetaDisplay", sortable:true },
         {label:  "Porcentagem (%)", key: "porcentagemDisplay", sortable:true },
         
       ],
@@ -118,15 +153,15 @@ export default {
       try {
         var date = new Date()
         let firstDayMonth = `${date.getFullYear()}-` + `0${date.getMonth() + 1}-` + `01`
-          console.log(firstDayMonth)
-        const resp = await axios.post(`${baseApiUrl}/pedido/getmetavendacategoria`,
-          { dataInicial: '2023-01-01', equipeVendas: this.user.equipeVendas })
+        //console.log(firstDayMonth)
+         await axios.post(`${baseApiUrl}/pedido/getmetavendacategoria`,
+          { dataInicial: firstDayMonth, equipeVendas: this.user.equipeVendas })
           .then(e => {
             this.$store.commit('setlstDataIndicadores', e.data.listVendas);
-            console.log('respapi', e.data);
+            //console.log('respapi', e.data);
              
           }).catch(err => { console.error(err) })
-        console.log('resp', resp)
+        //console.log('resp', resp)
        
 
 this.dateBr = `${date.getMonth() + 1}/` + `${date.getFullYear()}`  
@@ -150,10 +185,14 @@ this.dateBr = `${date.getMonth() + 1}/` + `${date.getFullYear()}`
             this.lstDetails = map(this.lstDetails, (i) => {
          let porcentagem = ((i.valorVenda / i.valorMeta) * 100).toFixed(2);
          let valorMetaDisplay  = numeral(i.valorMeta).format('$0,0.00')
+         let valorMetaFlat = i.valorMeta
+         let valorVendaFlat = i.valorVenda
                  let valorVendaDisplay = numeral(i.valorVenda).format('$0,0.00')
                  let porcentagemDisplay = numeral(porcentagem/100).format('0.00%')
-          return{...i,  porcentagemDisplay, valorMetaDisplay, valorVendaDisplay }
+          return{...i,  porcentagemDisplay, valorMetaDisplay, valorVendaDisplay, valorMetaFlat, valorVendaFlat }
         })
+
+       // console.log(this.lstDetails, 'listaDetailsFiltered')
 
         
 
@@ -297,11 +336,16 @@ this.dateBr = `${date.getMonth() + 1}/` + `${date.getFullYear()}`
     font-weight: 600;
     text-shadow: 0 0 darkorange;
   }
-  .tableData{
+  .tableData > table{
     background-color: rgba(255, 255, 255, 0.75) !important;
     td, th{
       font-weight: 600 !important;
       
+    }
+  }
+  @media(max-width:699px){
+    .btnContent{
+      justify-content: center;
     }
   }
 

@@ -26,48 +26,12 @@ import { saveAs } from 'file-saver'
              
             console.log(this.table,  this.fields, this.tableName)
 
-            let wb = XLSX.utils.book_new();
+         
 
-            if(this.tableRaw === true){
-
-            
-            let tables = document.querySelectorAll(this.tableName)
-            //let ws = XLSX.utils.table_to_sheet(document.getElementById(this.tableName))
-
-            console.log('worksheet', ws)
-            var wscols = [
-    {wch:10},
-    {wch:30},
-    {wch:20},
-    {wch:20},
-    {wch:20}
-];
-// ws['A1'].s = {font: {bold : true, color: {
-//       rgb: "FFFFAA00"
-//     }}, fill : {
-//         bgColor: {
-//             rgb: '#999',
-//         }
-//     }}
-    // ws['B1'].s = {font: {bold : true, color: {
-    //   rgb: "#999"
-    // }}, fill : {
-    //     bgColor: {
-    //         rgb: 'FFFFAA00',
-    //     }
-    // }}
-            ws["!cols"] = wscols;
-            XLSX.utils.book_append_sheet(wb, ws, 'aba1',)
-            let xlsxFile = XLSX.write(wb, {bookType: "xlsx", type: "array", output: "buffer"})
-
-            
-            saveAs(new Blob([xlsxFile], {type: "application/octet-stream"}),`${this.tableName}.xlsx`); 
-        }
-
-        else if(this.tableRaw === false){
+           
             console.log('entrou false', this.tableRaw)
         let wb = XLSX.utils.book_new();
-        let ws = XLSX.utils.json_to_sheet(this.tableData)
+        let ws = XLSX.utils.aoa_to_sheet(this.tableData)
 
         let wscols = [
     {wch:10},
@@ -83,7 +47,7 @@ import { saveAs } from 'file-saver'
 
             
             saveAs(new Blob([xlsxFile], {type: "application/octet-stream"}),`${this.tableName}.xlsx`); 
-        }
+        
     }
         }
     }

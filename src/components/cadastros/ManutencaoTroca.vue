@@ -396,6 +396,10 @@
                     month: 'numeric',
                     year: 'numeric',
                   }"
+                  :max="dataHoje"
+                  >
+
+                  
                   :disabled="
                     wtSelected.dtFinalTroca !== '0000-00-00' ||
                     wtSelected.dtReceb !== '0000-00-00'

@@ -35,10 +35,10 @@
                 <div class="fieldsDivisor">
                   <b-form-input :placeholder="serverMessages['cadastro.cliente.cnpj']" maxlength="20"
                     v-model="cadastroCliente.cnpj" required oninput="this.value = this.value.toUpperCase()"
-                    :state="cadastroCliente.cnpj.length === 14 ? true : false" :disabled="disableFirst">
+                    :state="cadastroCliente.cnpj.length >= 14 ? true : false" :disabled="disableFirst">
                   </b-form-input>
 
-                  <b-form-input :placeholder="serverMessages['cadastro.cliente.ie']" maxlength="18"
+                  <b-form-input :placeholder="serverMessages['cadastro.cliente.ie']" maxlength="20"
                     v-model="inscricaoEstadual" type="number" required :state="inscricaoEstadual !== null && inscricaoEstadual.length > 5
                       " :disabled="disableFirst">
                   </b-form-input>
@@ -63,9 +63,10 @@
               </b-col>
 
               <b-col cols="12">
-                <b-form-input oninput="this.value = this.value.toUpperCase()" placeholder="Breve relato sobre.. "
-                  style="height: 150px" :disabled="disableFirst" v-model="cadastroCliente.observacoes" maxlength="250">
-                </b-form-input>
+                <textarea class="form-control" style="height: 150px; width:100%" oninput="this.value = this.value.toUpperCase()" placeholder="Breve relato sobre.. "
+                  :disabled="disableFirst" v-model="cadastroCliente.observacoes" maxlength="250">
+              </textarea>
+                <span :style="cadastroCliente.length > 250 ? 'color:red' : 'color:green'"> {{ cadastroCliente.observacoes.length }}</span>
               </b-col>
             </b-form-row>
           </b-form-group>
@@ -696,7 +697,9 @@ export default {
         ""
       );
       this.validCep = this.validCep.replace(/[^0-9]/g, "");
+      this.inscricaoEstadual = this.inscricaoEstadual.replace(/[^0-9]/g, '');
 
+      console.log('ie', this.inscricaoEstadual)
 
       let nomeRepeat = new RegExp(/(.)\1{5}/g);
 

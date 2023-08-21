@@ -275,6 +275,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.3.9" data-path="Relatorios/comissao.html">
+            
+                <a href="Relatorios/comissao.html">
+            
+                    
+                    Relatório Comissões
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -334,18 +347,21 @@ Este portal é atualização de um projeto originalmente desenvolvido Maurício 
 <pre><code>Vue.js(Vue2) versão 2.6.4, Vuex, C#, SAP, Webpack, Node.Js(versão &gt; 14.0.0), e suas principais Libs de apoio são:
 ExcelJs, vue-select, Boostrap-Vue, vue-router, ECharts, jqwidgets, vue-html2canva, vue-excel-export, dateFNS, vue-toasted, vue-sidebar-menu, entre outros localizados no package.json;
 </code></pre><h3 id="acesso-ao-código-fonte">Acesso ao código fonte:</h3>
-<p>Ao clonar o projeto, verificar sua versão no Node ou Yarn, se assim preferir, para verificar rode:</p>
-<p>  <code>node -v ou yarn -v;</code></p>
-<p>Caso sua versão do Node/Yarn esteja certa, <code>rode um npm install --save-dev</code> e espere a conclusão da instalação das depedencias do projeto.</p>
+<pre><code>Ao clonar o projeto, verificar sua versão no Node ou Yarn, se assim preferir, para verificar rode:
+
+  ```node -v ou yarn -v;
+</code></pre><p>Caso sua versão do Node/Yarn esteja certa, <code>rode um npm install --save-dev</code> e espere a conclusão da instalação das depedencias do projeto.</p>
 <p>Depois das estapas acima, <code>rode npm run serve /yarn serve</code> para rodar a aplicação localmente.</p>
 <p>OBS: Caso seu backend não esteja configurado, não será possível fazer login na aplicação, devido a autenticação via API.</p>
-<h3 id="estrutura-geral-das-páginas-e-suas-características-crud">Estrutura geral das páginas e suas características CRUD.</h3>
-<h3 id="cadastros">Cadastros:</h3>
-<pre><code>Cadastro de Pedidos.
+<pre><code>### Estrutura geral das páginas e suas características CRUD.
+
+### Cadastros:
+</code></pre><p>Cadastro de Pedidos.
 Cadastro Pedido de Trocas;
-Cadastro Cliente;
-</code></pre><h3 id="consultas-e-relatórios">Consultas e relatórios:</h3>
-<pre><code>Relatório Mix de Produtos;
+Cadastro Cliente;</p>
+<pre><code>
+### Consultas e relatórios:
+</code></pre><p>Relatório Mix de Produtos;
 Relatório Faturamento;
 Relatório Pedidos à Faturar;
 Relatório Faturamento;
@@ -353,19 +369,26 @@ Relatório Clientes;
 Relatório Troca;
 Relatório Cobrança;
 Relatório de Pedidos Bloqueados;
-Relatório de Pedidos
-* Relatório Estatístico de Trocas ;
+Relatório de Pedidos</p>
+<ul>
+<li><p>Relatório Estatístico de Trocas ;</p>
+</li>
+<li><p>= Somente acessível em alguns usuários;
+```</p>
+</li>
+</ul>
+<h3 id="servindo-e-distrubuindo-a-aplicação">Servindo e distrubuindo a aplicação.</h3>
+<pre><code>Para a servir a aplicação em ambiente local, lembre-se de antes, configurar o BackEnd e também  mongoDB/NOSQL Manager de acordo com o manual de instalação localizado na rede interna.
 
-* = Somente acessível em alguns usuários;
-</code></pre><pre><code>
-### Servindo e distrubuindo a aplicação.
-</code></pre><p>Para a servir a aplicação em ambiente local, lembre-se de antes, configurar o BackEnd e também  mongoDB/NOSQL Manager de acordo com o manual de instalação localizado na rede interna.</p>
-<p>Como o mongoDB configurado, para servir a aplicação rode o Backend, logo após isso rode npm/yarn run serve, para que a aplicação rode em ambiente local.</p>
-<p>Para distribuidor a aplicação em produtos, antes, verifique se os links de validação localizados no arquivos &apos;jwtinterceptor.js&apos; e &apos;global.js&apos; estão apontando para o ambiente local, caso esteja, aponte-os para o ambiente de produção.</p>
-<p>Para gerar a build é recomendo que se instale o yarn, via npm install -g yarn, para evitar questões de cacheamento.</p>
-<p>Limpe o seu gerenciador de pacotes escolhido, via yarn cache clean, e após isso monte a versão de distribuição com comando yarn build.</p>
-<p>```</p>
+Como o mongoDB configurado, para servir a aplicação rode o Backend, logo após isso rode npm/yarn run serve, para que a aplicação rode em ambiente local.
 
+
+Para distribuidor a aplicação em produtos, antes, verifique se os links de validação localizados no arquivos &apos;jwtinterceptor.js&apos; e &apos;global.js&apos; estão apontando para o ambiente local, caso esteja, aponte-os para o ambiente de produção.
+
+Para gerar a build é recomendo que se instale o yarn, via npm install -g yarn, para evitar questões de cacheamento.
+
+Limpe o seu gerenciador de pacotes escolhido, via yarn cache clean, e após isso monte a versão de distribuição com comando yarn build.
+</code></pre>
                                 
                                 </section>
                             
@@ -404,7 +427,7 @@ Relatório de Pedidos
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Cadastros","level":"1.2","depth":1,"path":"Cadastros/README.md","ref":"Cadastros/README.md","articles":[{"title":"Cadastros De Pedidos","level":"1.2.1","depth":2,"path":"Cadastros/cadastro-pedidos.md","ref":"Cadastros/cadastro-pedidos.md","articles":[]},{"title":"Cadastros De Clientes","level":"1.2.2","depth":2,"path":"Cadastros/cadastro-cliente.md","ref":"Cadastros/cadastro-cliente.md","articles":[]},{"title":"Cadastros De Trocas","level":"1.2.3","depth":2,"path":"Cadastros/cadastro-pedido-troca.md","ref":"Cadastros/cadastro-pedido-troca.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2023-06-07T15:48:59.535Z","type":"markdown"},"gitbook":{"version":"4.0.7","time":"2023-07-20T19:23:00.349Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Cadastros","level":"1.2","depth":1,"path":"Cadastros/README.md","ref":"Cadastros/README.md","articles":[{"title":"Cadastros De Pedidos","level":"1.2.1","depth":2,"path":"Cadastros/cadastro-pedidos.md","ref":"Cadastros/cadastro-pedidos.md","articles":[]},{"title":"Cadastros De Clientes","level":"1.2.2","depth":2,"path":"Cadastros/cadastro-cliente.md","ref":"Cadastros/cadastro-cliente.md","articles":[]},{"title":"Cadastros De Trocas","level":"1.2.3","depth":2,"path":"Cadastros/cadastro-pedido-troca.md","ref":"Cadastros/cadastro-pedido-troca.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2023-08-21T11:59:24.474Z","type":"markdown"},"gitbook":{"version":"4.0.7","time":"2023-08-21T13:17:20.832Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

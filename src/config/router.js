@@ -16,6 +16,7 @@ import CadastroPedido from '../components/cadastros/CadastroPedido'
 import ManutencaoTroca from '../components/cadastros/ManutencaoTroca'
 import Home from '../components/home/Home'
 import RelatorioClientes from '../components/relatorios/RelatorioClientes'
+import RelatorioComissao from '../components/relatorios/RelatorioComissao'
 
 
 
@@ -94,6 +95,10 @@ const routes = [
 {   name:'Relatório Clientes',
     path: '/relatcli',
     component: RelatorioClientes
+},
+{   name:'Relatório Comissao',
+    path: '/relatcom',
+    component: RelatorioComissao
 },
 
 {   name:'Estatístico de troca',

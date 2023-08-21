@@ -93,9 +93,9 @@ export default new Vuex.Store({
                     }
                     
                 }
-
-                for( let i = 9 ; i <= 19 ; i++){
-                    if(i !== 14 && i !== 19){
+//i !== 14 &&
+                for( let i = 9 ; i <= 20 ; i++){
+                    if(i !== 20){
                         let menu = state.user.acessoMenu.find(item => item.codMenu === i.toString())
                       if (menu !== undefined && menu !== null){
                         if(menu.valid){

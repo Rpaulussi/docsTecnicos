@@ -10,7 +10,7 @@
 
 
 
-<div v-if="this.user.equipeVendas === '533'">
+<div>
         <div class="row">
           <div class="col-12">
 
@@ -61,8 +61,7 @@
 
 
               <h3> Últimas Atualizações: </h3>
-              <li><b>[CadastroPedidos]: </b>Inclusão parcial das imagens da nova coleção beachwear.</li>
-              <li><b>[CadastroPedidos]: </b>Readequação em tela do campo cliente.</li>
+              <li><b>[Home]: </b>Adicionado relatório de metas mensais com indicadores.</li>
               <li><b>[CadastroTroca]: </b>Limite de 250 caracteres para o campo de Observação.</li>
               <li><b>[CadastroClientes]: </b> Remoção da obrigatoriedade, ao cadastrar, de bancos e endereço de fornecedor. </li>
             </ul>

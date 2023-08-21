@@ -55,7 +55,7 @@
                 :disabled="spinner" :placeholder="traduction.choose" id="equipe" name="eqpdeVendas">
               </Dropdown>
             </b-form-group>
-            <b-form-group v-bind:label="serverMessages['troca.cadastro.mip']">
+            <b-form-group v-bind:label="'WT'">
               <b-form-input v-model="mip" placeholder=""></b-form-input>
             </b-form-group>
           </b-row>

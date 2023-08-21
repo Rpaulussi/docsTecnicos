@@ -120,12 +120,19 @@ export default {
 <style>
   .auth-container{
      display: flex;
-     justify-content: center;
+     justify-content: flex-end;
      align-items: center;
      background-image: url('../../assets/capa_login.jpg');
      background-size: cover;
      background-repeat: no-repeat;
      height: 100%;
+     padding-right:10%;
+  }
+  @media(max-width:1279px){
+   .auth-container{
+      padding:0;
+      justify-content:center;
+   }
   }
 
   .auth-modal-login{

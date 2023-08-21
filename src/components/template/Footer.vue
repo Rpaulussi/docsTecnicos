@@ -2,7 +2,7 @@
   <footer class="footer">
     <span
       style="font-size: 12px !important; text-decoration:underline; text-transform: lowercase;"
-      >Versão: 1.2.9</span
+      >Versão: 1.3.2</span
     >
     <span
       >Copyright
